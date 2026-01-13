@@ -7,6 +7,7 @@ const links = [
     { path: '/books', label: 'BOOKS' },
     { path: '/journal', label: 'JOURNAL' },
     { path: '/rules', label: 'RULES' },
+    { path: '/exams', label: 'EXAMS' },
     { path: '/stats', label: 'STATS' },
 ];
 

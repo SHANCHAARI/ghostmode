@@ -17,7 +17,10 @@ export default function DailyExecution() {
     const [loading, setLoading] = useState(true);
 
     const fetchTodaysTasks = useCallback(async () => {
-        if (!user) return;
+        if (!user) {
+            setLoading(false);
+            return;
+        }
 
         try {
             const today = new Date().toISOString().split('T')[0];

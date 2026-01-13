@@ -8,6 +8,7 @@ import Journal from './pages/Journal';
 
 import Rules from './pages/Rules';
 import Stats from './pages/Stats';
+import SemExams from './pages/SemExams';
 import Login from './pages/Login';
 
 const Layout = ({ children }) => {
@@ -48,6 +49,7 @@ function App() {
           <Route path="/books" element={<ProtectedRoute><Books /></ProtectedRoute>} />
           <Route path="/journal" element={<ProtectedRoute><Journal /></ProtectedRoute>} />
           <Route path="/stats" element={<ProtectedRoute><Stats /></ProtectedRoute>} />
+          <Route path="/exams" element={<ProtectedRoute><SemExams /></ProtectedRoute>} />
         </Routes>
       </Router>
     </AuthProvider>

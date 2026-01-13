@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
-import { Plus, Trash2, BookOpen, CheckCircle, Circle } from 'lucide-react';
+import { Plus, Trash2, BookOpen } from 'lucide-react';
 
 export default function Books() {
     const { user } = useAuth();
@@ -158,23 +158,27 @@ export default function Books() {
                             </div>
 
                             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                <select
-                                    value={book.status}
-                                    onChange={(e) => updateStatus(book.id, e.target.value)}
-                                    className="text-mono"
-                                    style={{
-                                        padding: '0.3rem 0.8rem',
-                                        width: 'auto',
-                                        fontSize: '0.8rem',
-                                        borderColor: book.status === 'Finished' ? 'var(--success-color)' : book.status === 'Reading' ? 'var(--accent-color)' : 'var(--border-color)',
-                                        color: book.status === 'Finished' ? 'var(--success-color)' : book.status === 'Reading' ? 'var(--accent-color)' : 'var(--text-secondary)'
-                                    }}
-                                >
-                                    <option value="To Read">TO READ</option>
-                                    <option value="Reading">READING</option>
-                                    <option value="Finished">FINISHED</option>
-                                </select>
-                                <button onClick={() => deleteBook(book.id)} style={{ color: 'var(--text-tertiary)' }}><Trash2 size={16} /></button>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                                    <label style={{ fontSize: '0.65rem', marginBottom: '4px', color: 'var(--text-secondary)', letterSpacing: '0.1em' }} className="text-mono">STATUS</label>
+                                    <select
+                                        value={book.status}
+                                        onChange={(e) => updateStatus(book.id, e.target.value)}
+                                        className="text-mono"
+                                        style={{
+                                            padding: '0.3rem 0.8rem',
+                                            width: 'auto',
+                                            fontSize: '0.8rem',
+                                            cursor: 'pointer',
+                                            borderColor: book.status === 'Finished' ? 'var(--success-color)' : book.status === 'Reading' ? 'var(--accent-color)' : 'var(--border-color)',
+                                            color: book.status === 'Finished' ? 'var(--success-color)' : book.status === 'Reading' ? 'var(--accent-color)' : 'var(--text-secondary)'
+                                        }}
+                                    >
+                                        <option value="To Read">TO READ</option>
+                                        <option value="Reading">READING</option>
+                                        <option value="Finished">FINISHED</option>
+                                    </select>
+                                </div>
+                                <button onClick={() => deleteBook(book.id)} style={{ color: 'var(--text-tertiary)', paddingTop: '1.2rem' }}><Trash2 size={16} /></button>
                             </div>
                         </div>
 
