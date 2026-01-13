@@ -15,6 +15,16 @@ const Layout = ({ children }) => {
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
       <main style={{ flex: 1, paddingBottom: '4rem' }}>{children}</main>
+      <footer style={{
+        textAlign: 'center',
+        padding: '2rem',
+        color: 'var(--text-tertiary)',
+        fontSize: '0.7rem',
+        letterSpacing: '0.2em',
+        fontFamily: 'var(--font-mono)'
+      }}>
+        SYSTEM ARCHITECT: SAGAR
+      </footer>
     </div>
   )
 };
