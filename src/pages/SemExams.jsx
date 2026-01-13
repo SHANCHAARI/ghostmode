@@ -107,12 +107,44 @@ export default function SemExams() {
         }
     };
 
+    const totalUnits = SYLLABUS.reduce((acc, subj) => acc + subj.units.length, 0);
+    const completedUnits = Object.values(units).filter(s => s === 'Completed').length;
+    const progress = (completedUnits / totalUnits) * 100;
+
     const todayMsg = getTodayPlan();
 
     return (
         <div className="container" style={{ marginTop: '3rem', maxWidth: '800px', paddingBottom: '4rem' }}>
             <header style={{ marginBottom: '3rem' }}>
                 <h1 style={{ fontWeight: 600, marginBottom: '0.5rem', letterSpacing: '-0.02em', color: 'var(--text-primary)' }}>SEMESTER PROTOCOL</h1>
+
+                {/* Progress Bar */}
+                <div style={{ marginBottom: '2rem' }}>
+                    <div className="flex-between text-mono text-muted" style={{ fontSize: '0.8rem', marginBottom: '0.5rem' }}>
+                        <span>READINESS</span>
+                        <span>{completedUnits} / {totalUnits} UNITS</span>
+                    </div>
+                    <div style={{
+                        height: '8px',
+                        background: 'var(--surface-color)',
+                        width: '100%',
+                        borderRadius: '4px',
+                        overflow: 'hidden',
+                        position: 'relative'
+                    }}>
+                        <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${progress}%` }}
+                            transition={{ duration: 1, ease: "circOut" }}
+                            style={{
+                                height: '100%',
+                                background: 'var(--accent-color)',
+                                boxShadow: '0 0 10px var(--accent-color)'
+                            }}
+                        />
+                    </div>
+                </div>
+
                 <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
                     <div className="card" style={{ padding: '1rem', flex: 1, borderColor: 'var(--accent-color)', background: 'rgba(57, 255, 20, 0.05)' }}>
                         <span className="text-mono text-muted" style={{ fontSize: '0.75rem' }}>CURRENT OBJECTIVE</span>
