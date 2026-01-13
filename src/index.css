@@ -110,6 +110,7 @@ select:focus {
 .card {
   background: rgba(10, 10, 10, 0.6);
   border: 1px solid var(--border-color);
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   border-radius: 12px;
   padding: 1.5rem;
